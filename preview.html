@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apexsoft Admin Panel - Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        display: ["Inter"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="max-w-4xl w-full p-8">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <div class="flex justify-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <svg class="h-12 w-12 text-primary" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M158.9,89.16l-32-18-32,18L26.3,121.84,128,183.33l101.7-61.49ZM128,34,32.23,92.4,128,150.8,223.77,92.4ZM232,104.75v50.5a8,8,0,0,1-4.37,7.26l-96,54.86a7.9,7.9,0,0,1-7.26,0l-96-54.86A8,8,0,0,1,24,155.25v-50.5a8,8,0,0,1,4.37-7.26L52,83.17V144a8,8,0,0,0,16,0V100.8l52.37,29.93a8,8,0,0,0,7.26,0L180,100.8V144a8,8,0,0,0,16,0V83.17l23.63,14.32A8,8,0,0,1,232,104.75Z"></path>
+                        </svg>
+                        <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Apexsoft Technology</h1>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">React Admin Panel</h2>
+                <p class="text-gray-600 dark:text-gray-400">Complete admin dashboard converted from HTML to React</p>
+            </div>
+
+            <!-- Setup Instructions -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 mb-6">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">🚀 Quick Start Guide</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                        <div>
+                            <p class="font-medium text-gray-900 dark:text-white">Install Dependencies</p>
+                            <code class="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">npm install</code>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                        <div>
+                            <p class="font-medium text-gray-900 dark:text-white">Start Development Server</p>
+                            <code class="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">npm start</code>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                        <div>
+                            <p class="font-medium text-gray-900 dark:text-white">Open Browser</p>
+                            <code class="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">http://localhost:3000</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Credentials -->
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6 mb-6">
+                <div class="flex items-start gap-3">
+                    <svg class="h-6 w-6 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    <div>
+                        <h3 class="text-lg font-medium text-yellow-800 dark:text-yellow-200 mb-2">Demo Login Credentials</h3>
+                        <div class="space-y-1 text-yellow-700 dark:text-yellow-300">
+                            <p><strong>Email:</strong> apexsofttechnology@gmail.com</p>
+                            <p><strong>Password:</strong> Apex@8899</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">✨ Features</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                        <li>• Secure Authentication System</li>
+                        <li>• Interactive Dashboard with Charts</li>
+                        <li>• User Management (CRUD)</li>
+                        <li>• System Settings Panel</li>
+                        <li>• Dark Mode Support</li>
+                        <li>• Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">🛠️ Tech Stack</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                        <li>• React 18 with Hooks</li>
+                        <li>• React Router DOM</li>
+                        <li>• Tailwind CSS</li>
+                        <li>• Phosphor Icons</li>
+                        <li>• Local Storage Auth</li>
+                        <li>• Modern ES6+ JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pages Overview -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">📄 Available Pages</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <div class="w-8 h-8 bg-primary rounded-lg mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                        </div>
+                        <p class="text-sm font-medium text-gray-900 dark:text-white">Login</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <div class="w-8 h-8 bg-primary rounded-lg mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                            </svg>
+                        </div>
+                        <p class="text-sm font-medium text-gray-900 dark:text-white">Dashboard</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <div class="w-8 h-8 bg-primary rounded-lg mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                            </svg>
+                        </div>
+                        <p class="text-sm font-medium text-gray-900 dark:text-white">Users</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <div class="w-8 h-8 bg-primary rounded-lg mx-auto mb-2 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                            </svg>
+                        </div>
+                        <p class="text-sm font-medium text-gray-900 dark:text-white">Settings</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center mt-8 text-gray-500 dark:text-gray-400">
+                <p>Ready to run! Execute the commands above to start your React admin panel.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
