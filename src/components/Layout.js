@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import NotificationCenter from './NotificationCenter';
 
 const Layout = ({ children, onLogout }) => {
   const location = useLocation();
@@ -72,15 +73,7 @@ const Layout = ({ children, onLogout }) => {
         </svg>
       ),
     },
-    {
-      name: 'About Us',
-      href: '/about',
-      icon: (
-        <svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
-          <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
-        </svg>
-      ),
-    },
+
     {
       name: 'Job Openings',
       href: '/job-openings',
@@ -108,11 +101,29 @@ const Layout = ({ children, onLogout }) => {
         </svg>
       ),
     },
+    {
+      name: 'Project Quotation',
+      href: '/project-quotation',
+      icon: (
+        <svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+          <path d="M200,168a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h40A8,8,0,0,1,200,168Zm-8-40H152a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm56-64V208a16,16,0,0,1-16,16H32a16,16,0,0,1-16-16V64A16,16,0,0,1,32,48H80V32a16,16,0,0,1,16-16h64a16,16,0,0,1,16,16V48h48A16,16,0,0,1,248,64ZM96,48h64V32H96ZM232,64H32V208H232ZM136,112a8,8,0,0,0-8-8H88a8,8,0,0,0-8,8v48a8,8,0,0,0,8,8h40a8,8,0,0,0,8-8Zm-16,40H96V120h24Z"></path>
+        </svg>
+      ),
+    },
+    {
+      name: 'Project Management',
+      href: '/project-management',
+      icon: (
+        <svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+          <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm-16,160H56V56h144ZM88,80H72v96h16Zm48,0H120v96h16Zm48,0H168v96h16Z"></path>
+        </svg>
+      ),
+    },
   ];
 
   return (
     <div 
-      className="flex h-screen relative overflow-hidden"
+      className="flex h-screen relative overflow-hidden bg-background-light dark:bg-background-dark"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -239,17 +250,7 @@ const Layout = ({ children, onLogout }) => {
         </nav>
         {/* Footer Actions */}
         <div className="mt-auto p-4 space-y-2 border-t border-gray-200 bg-gradient-to-r from-gray-50 to-blue-50">
-          <button
-            onClick={() => window.location.href = '../../Apexsoft/public/index.html'}
-            className={`group flex w-full items-center gap-3 rounded-xl font-medium text-gray-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 hover:text-blue-700 hover:shadow-md transition-all duration-300 transform hover:scale-105 active:scale-95 touch-friendly ${isMobile ? 'px-4 py-4 text-base' : 'px-4 py-3 text-sm'}`}
-          >
-            <div className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
-              <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
-                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm40-68a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,148Zm0-32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,116Z"></path>
-              </svg>
-            </div>
-            <span className="transition-all duration-300 group-hover:translate-x-1 group-hover:font-medium">View Website</span>
-          </button>
+
           
           <Link
             to="/settings"
@@ -284,8 +285,22 @@ const Layout = ({ children, onLogout }) => {
       
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
+        {/* Desktop Header */}
+        <header className="hidden lg:flex items-center justify-end px-8 py-4 bg-white/50 backdrop-blur-sm border-b border-gray-100 dark:border-gray-700 sticky top-0 z-30">
+          <div className="flex items-center gap-4">
+             <NotificationCenter />
+             <div className="h-8 w-[1px] bg-gray-200 dark:bg-gray-700"></div>
+             <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white text-sm font-bold shadow-md">
+                   A
+                </div>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-200">Admin</span>
+             </div>
+          </div>
+        </header>
+
         {/* Mobile Header */}
-        <header className="lg:hidden bg-gradient-to-r from-white via-blue-50/30 to-white border-b border-gray-200 px-4 py-3 flex items-center justify-between shadow-lg backdrop-blur-sm">
+        <header className="lg:hidden bg-gradient-to-r from-white via-blue-50/30 to-white border-b border-gray-200 px-4 py-3 flex items-center justify-between shadow-lg backdrop-blur-sm relative z-40">
           <button
             onClick={() => setIsSidebarOpen(true)}
             className="group p-3 rounded-xl hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 transform hover:scale-110 active:scale-95 shadow-md hover:shadow-lg"
@@ -308,7 +323,9 @@ const Layout = ({ children, onLogout }) => {
             <span className="font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">ApexAdmin</span>
           </div>
           
-          <div className="w-10"></div>
+          <div className="flex items-center gap-2">
+             <NotificationCenter />
+          </div>
         </header>
         
         {/* Page Content with keyed transition */}
@@ -316,7 +333,9 @@ const Layout = ({ children, onLogout }) => {
           key={location.pathname} 
           className={`flex-1 overflow-y-auto animate-fade-in-up ${isMobile ? 'mobile-padding mobile-text' : isTablet ? 'tablet-optimized tablet-text' : 'desktop-optimized'}`}
         >
-          {children}
+           <div className="pt-2 lg:pt-0">
+             {children}
+           </div>
         </div>
       </main>
     </div>

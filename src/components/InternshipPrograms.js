@@ -51,12 +51,12 @@ const InternshipPrograms = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'pending': return 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border-yellow-300';
-      case 'reviewing': return 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border-blue-300';
-      case 'interviewed': return 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border-purple-300';
-      case 'accepted': return 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border-green-300';
-      case 'rejected': return 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border-red-300';
-      default: return 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 border-gray-300';
+      case 'pending': return 'bg-yellow-100 text-yellow-700 border-yellow-200';
+      case 'reviewing': return 'bg-blue-100 text-blue-700 border-blue-200';
+      case 'interviewed': return 'bg-purple-100 text-purple-700 border-purple-200';
+      case 'accepted': return 'bg-green-100 text-green-700 border-green-200';
+      case 'rejected': return 'bg-red-100 text-red-700 border-red-200';
+      default: return 'bg-gray-100 text-gray-700 border-gray-200';
     }
   };
 
@@ -91,524 +91,362 @@ const InternshipPrograms = () => {
   const filteredApplications = getFilteredApplications();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
-        {/* Header Section */}
-        <div className="mb-6 lg:mb-8">
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
-            <div className="text-center lg:text-left">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                Internship Programs
-              </h1>
-              <p className="mt-2 text-gray-600 text-sm sm:text-base lg:text-lg">
-                Manage internship applications from client website
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center lg:justify-end">
-              <button
-                onClick={refetchApplications}
-                disabled={applicationsLoading}
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
-              >
+    <div className="min-h-screen bg-gray-50/50 p-6 md:p-8 font-sans text-gray-800 animate-fade-in relative overflow-hidden">
+      {/* Ambient Background Elements */}
+      <div className="fixed top-0 right-0 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px] -z-10 pointer-events-none mix-blend-multiply animate-pulse-slow"></div>
+      <div className="fixed bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/10 rounded-full blur-[100px] -z-10 pointer-events-none mix-blend-multiply animate-pulse-slow animation-delay-2000"></div>
+
+      {/* Header Section */}
+      <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-sm border border-white/40 p-6 mb-8 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10 transition-all hover:shadow-md">
+        <div className="flex-1 text-center md:text-left">
+          <h1 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 mb-2 tracking-tight">
+            Internship Programs
+          </h1>
+          <p className="text-gray-500 font-medium text-sm md:text-base">
+            Manage and review internship applications with ease
+          </p>
+        </div>
+        
+        <div className="flex flex-wrap justify-center gap-3">
+            <button
+              onClick={refetchApplications}
+              disabled={applicationsLoading}
+              className="px-5 py-2.5 bg-white text-indigo-600 border border-indigo-100 hover:border-indigo-300 hover:bg-indigo-50 rounded-xl transition-all shadow-sm font-semibold flex items-center gap-2 group"
+            >
+              <div className={`transition-transform duration-700 ${applicationsLoading ? 'animate-spin' : 'group-hover:rotate-180'}`}>
                 {applicationsLoading ? (
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                 ) : (
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                  </svg>
+                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
                 )}
-                Refresh
-              </button>
-              <button
+              </div>
+              <span className="hidden sm:inline">Refresh Data</span>
+            </button>
+            <button
                 onClick={async () => {
-                  console.log('Manual test: Fetching internship applications...');
                   const result = await dataService.getInternshipApplications();
-                  console.log('Manual test result:', result);
+                  console.log(result);
                 }}
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base"
-              >
-                Test Fetch
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Statistics Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 mb-6 lg:mb-8">
-          <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex-1">
-                <p className="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Applications</p>
-                <p className="text-2xl sm:text-3xl font-bold text-gray-800 mt-1 sm:mt-2">{statusCounts.all}</p>
-              </div>
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mt-2 sm:mt-0 self-end sm:self-auto">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-        <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Pending</p>
-              <p className="text-3xl font-bold text-yellow-600 mt-2">{statusCounts.pending}</p>
-            </div>
-            <div className="w-12 h-12 bg-gradient-to-r from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Reviewing</p>
-              <p className="text-3xl font-bold text-blue-600 mt-2">{statusCounts.reviewing}</p>
-            </div>
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-100 to-indigo-200 rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Accepted</p>
-              <p className="text-3xl font-bold text-green-600 mt-2">{statusCounts.accepted}</p>
-            </div>
-            <div className="w-12 h-12 bg-gradient-to-r from-green-100 to-emerald-200 rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Rejected</p>
-              <p className="text-3xl font-bold text-red-600 mt-2">{statusCounts.rejected}</p>
-            </div>
-            <div className="w-12 h-12 bg-gradient-to-r from-red-100 to-red-200 rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </div>
-          </div>
+                className="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold shadow-lg shadow-indigo-200 hover:shadow-indigo-300 hover:-translate-y-0.5 transition-all flex items-center gap-2"
+            >
+               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+               <span>Test Fetch</span>
+            </button>
         </div>
       </div>
 
-        {/* Filter Tabs */}
-        <div className="mb-6 lg:mb-8">
-          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start">
-          {[
-            { key: 'all', label: 'All Applications', count: statusCounts.all },
-            { key: 'pending', label: 'Pending', count: statusCounts.pending },
-            { key: 'reviewing', label: 'Reviewing', count: statusCounts.reviewing },
-            { key: 'interviewed', label: 'Interviewed', count: statusCounts.interviewed },
-            { key: 'accepted', label: 'Accepted', count: statusCounts.accepted },
-            { key: 'rejected', label: 'Rejected', count: statusCounts.rejected }
-          ].map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setFilterStatus(tab.key)}
-                className={`px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  filterStatus === tab.key
-                    ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/30'
-                    : 'bg-white text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-700 shadow-md hover:shadow-lg border border-gray-200'
-                }`}
-              >
-                <span className="hidden sm:inline">{tab.label}</span>
-                <span className="sm:hidden">{tab.key === 'all' ? 'All' : tab.key}</span>
-                <span className="ml-1">({tab.count})</span>
-              </button>
-          ))}
+      {/* Stats Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+         {/* Total */}
+         <div className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between group hover:shadow-md transition-all">
+            <div className="flex justify-between items-start mb-2">
+               <div className="p-2 bg-indigo-50 text-indigo-600 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+               </div>
+               <span className="text-2xl font-bold text-gray-800">{statusCounts.all}</span>
+            </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Applications</p>
+         </div>
+
+         {/* Pending */}
+         <div className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between group hover:shadow-md transition-all">
+            <div className="flex justify-between items-start mb-2">
+               <div className="p-2 bg-yellow-50 text-yellow-600 rounded-lg group-hover:bg-yellow-500 group-hover:text-white transition-colors">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+               </div>
+               <span className="text-2xl font-bold text-gray-800">{statusCounts.pending}</span>
+            </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Pending</p>
+         </div>
+
+         {/* Reviewing */}
+         <div className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between group hover:shadow-md transition-all">
+            <div className="flex justify-between items-start mb-2">
+               <div className="p-2 bg-blue-50 text-blue-600 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+               </div>
+               <span className="text-2xl font-bold text-gray-800">{statusCounts.reviewing}</span>
+            </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Reviewing</p>
+         </div>
+
+         {/* Accepted */}
+         <div className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between group hover:shadow-md transition-all">
+            <div className="flex justify-between items-start mb-2">
+               <div className="p-2 bg-green-50 text-green-600 rounded-lg group-hover:bg-green-600 group-hover:text-white transition-colors">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+               </div>
+               <span className="text-2xl font-bold text-gray-800">{statusCounts.accepted}</span>
+            </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Accepted</p>
+         </div>
+
+         {/* Rejected */}
+         <div className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between group hover:shadow-md transition-all">
+            <div className="flex justify-between items-start mb-2">
+               <div className="p-2 bg-red-50 text-red-600 rounded-lg group-hover:bg-red-600 group-hover:text-white transition-colors">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+               </div>
+               <span className="text-2xl font-bold text-gray-800">{statusCounts.rejected}</span>
+            </div>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Rejected</p>
+         </div>
+      </div>
+
+      {/* Filter Tabs */}
+      <div className="mb-8">
+        <div className="flex flex-wrap gap-2 p-1 bg-white/60 backdrop-blur-md rounded-2xl border border-white/20 shadow-sm w-full md:w-fit">
+        {[
+          { key: 'all', label: 'All' },
+          { key: 'pending', label: 'Pending' },
+          { key: 'reviewing', label: 'Reviewing' },
+          { key: 'interviewed', label: 'Interviewed' },
+          { key: 'accepted', label: 'Accepted' },
+          { key: 'rejected', label: 'Rejected' }
+        ].map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setFilterStatus(tab.key)}
+              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                filterStatus === tab.key
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200 cursor-default'
+                  : 'text-gray-600 hover:bg-white/80 hover:text-indigo-600'
+              }`}
+            >
+              <span className="capitalize">{tab.label}</span>
+              {tab.key !== 'all' && (
+                <span className={`ml-2 text-xs py-0.5 px-1.5 rounded-full ${
+                    filterStatus === tab.key ? 'bg-white/20' : 'bg-gray-100 text-gray-500'
+                }`}>
+                    {statusCounts[tab.key]}
+                </span>
+              )}
+            </button>
+        ))}
         </div>
       </div>
 
-        {/* Applications List */}
-        <div className="space-y-3 sm:space-y-4">
+      {/* Content Area */}
+      <div className="grid grid-cols-1 gap-4">
         {applicationsLoading ? (
-          <div className="flex items-center justify-center py-16">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-200 border-t-blue-600 mx-auto mb-4"></div>
-              <span className="text-lg font-medium text-gray-600">Loading applications...</span>
+            <div className="flex flex-col items-center justify-center py-20 animate-pulse">
+                <div className="w-16 h-16 bg-gray-200 rounded-full mb-4"></div>
+                <div className="h-4 w-48 bg-gray-200 rounded mb-2"></div>
+                <div className="h-3 w-32 bg-gray-200 rounded"></div>
             </div>
-          </div>
         ) : applicationsError ? (
-          <div className="text-center py-16">
-            <div className="bg-gradient-to-r from-red-50 to-red-100 border border-red-200 rounded-xl p-8 max-w-md mx-auto shadow-lg">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-red-800 mb-2">Error loading applications</h3>
-              <p className="text-red-700">{applicationsError}</p>
+            <div className="p-8 bg-red-50 border border-red-100 rounded-2xl text-center">
+                <p className="text-red-600 font-medium mb-2">Error loading applications</p>
+                <p className="text-red-500 text-sm">{applicationsError}</p>
+                <button onClick={refetchApplications} className="mt-4 text-sm text-red-700 underline">Try Again</button>
             </div>
-          </div>
         ) : filteredApplications.length === 0 ? (
-          <div className="text-center py-20">
-            <div className="max-w-md mx-auto">
-              <div className="w-20 h-20 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">
-                {filterStatus === 'all' ? 'No Internship Applications' : `No ${filterStatus} Applications`}
-              </h3>
-              <p className="text-gray-600 text-lg">
-                {filterStatus === 'all' 
-                  ? 'Internship applications from your client website will appear here.'
-                  : `No applications with ${filterStatus} status found.`
-                }
-              </p>
-            </div>
-          </div>
-        ) : (
-          filteredApplications.map((application, index) => (
-            <div key={application.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
-              <div className="p-6">
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-gray-800">{application.applicantName}</h3>
-                        <p className="text-sm text-gray-500 font-medium">Applied {formatDate(application.submittedAt)}</p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <select
-                          value={application.status || 'pending'}
-                          onChange={(e) => updateApplicationStatus(application.id, e.target.value)}
-                          className={`px-4 py-2 rounded-xl text-sm font-bold border-2 transition-all duration-300 hover:scale-105 ${getStatusColor(application.status || 'pending')}`}
-                        >
-                          <option value="pending">Pending</option>
-                          <option value="reviewing">Reviewing</option>
-                          <option value="interviewed">Interviewed</option>
-                          <option value="accepted">Accepted</option>
-                          <option value="rejected">Rejected</option>
-                        </select>
-                      </div>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-                      <div className="space-y-2">
-                        <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide">Contact Information</h4>
-                        <p className="text-sm text-gray-600">
-                          <span className="inline-flex items-center gap-1">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            {application.email}
-                          </span>
-                        </p>
-                        {application.phone && (
-                          <p className="text-sm text-gray-600">
-                            <span className="inline-flex items-center gap-1">
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                              </svg>
-                              {application.phone}
-                            </span>
-                          </p>
-                        )}
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide">Internship Details</h4>
-                        <p className="text-sm text-gray-600">
-                          <span className="inline-flex items-center gap-1">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m8 0h-2" />
-                            </svg>
-                            {application.domain}
-                          </span>
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          <span className="inline-flex items-center gap-1">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            {application.duration}
-                          </span>
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          <span className="inline-flex items-center gap-1">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                            </svg>
-                            {application.applicationType === 'internship' ? 'Internship Application' : 'Application'}
-                          </span>
-                        </p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide">Documents</h4>
-                        {application.resumeFileName && (
-                          <p className="text-sm text-gray-600">
-                            <span className="inline-flex items-center gap-1">
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                              </svg>
-                              {application.resumeFileName}
-                            </span>
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="flex justify-between items-center pt-6 border-t border-gray-100">
-                      <div className="text-xs text-gray-500 font-medium">
-                        ID: {application.id.substring(0, 8)}...
-                      </div>
-                      <div className="flex gap-3">
-                        <button
-                          onClick={() => setSelectedApplication(application)}
-                          className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                        >
-                          View Details
-                        </button>
-                        <button
-                          onClick={() => deleteApplication(application.id)}
-                          className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+            <div className="flex flex-col items-center justify-center py-20 bg-white/50 rounded-3xl border border-dashed border-gray-300">
+                <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4 text-gray-300">
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </div>
-              </div>
+                <h3 className="text-xl font-bold text-gray-400">No applications found</h3>
+                <p className="text-gray-400 text-sm mt-1">Try changing the filter or refresh</p>
             </div>
-          ))
+        ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {filteredApplications.map((app, idx) => (
+                    <div 
+                        key={app.id} 
+                        className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:border-indigo-100 transition-all duration-300 group animate-fade-in-up"
+                        style={{ animationDelay: `${idx * 0.05}s` }}
+                    >
+                        {/* Card Header */}
+                        <div className="flex justify-between items-start mb-4">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                                    {app.applicantName ? app.applicantName.charAt(0).toUpperCase() : 'A'}
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-gray-800 line-clamp-1">{app.applicantName || 'Unknown Applicant'}</h3>
+                                    <p className="text-xs text-gray-500">{formatDate(app.submittedAt)}</p>
+                                </div>
+                            </div>
+                            <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${getStatusColor(app.status || 'pending')}`}>
+                                {app.status || 'pending'}
+                            </span>
+                        </div>
+
+                        {/* Card Body */}
+                        <div className="space-y-3 mb-6">
+                            <div className="flex items-center gap-2 text-sm text-gray-600">
+                                <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                <span className="truncate">{app.email}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-gray-600">
+                                <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m8 0h-2" /></svg>
+                                <span className="font-medium">{app.domain || 'General Internship'}</span>
+                            </div>
+                            {app.resumeFileName && (
+                                <div className="flex items-center gap-2 text-sm text-indigo-600 bg-indigo-50 p-2 rounded-lg border border-indigo-100">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
+                                    <span className="truncate flex-1">{app.resumeFileName}</span>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Card Footer */}
+                        <div className="flex items-center gap-2 pt-4 border-t border-gray-100">
+                            <button 
+                                onClick={() => setSelectedApplication(app)}
+                                className="flex-1 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+                            >
+                                View Details
+                            </button>
+                            <div className="relative group/actions">
+                                <button className="p-2 text-gray-400 hover:text-gray-600 bg-white border border-gray-200 rounded-lg">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg>
+                                </button>
+                                {/* Quick Actions Dropdown (CSS Hover only for demo simplicity, logic would need state) */}
+                                <div className="absolute right-0 bottom-full mb-2 w-32 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden hidden group-hover/actions:block z-10">
+                                    <button onClick={() => updateApplicationStatus(app.id, 'reviewing')} className="w-full text-left px-4 py-2 text-xs hover:bg-gray-50 text-gray-700">Mark Reviewing</button>
+                                    <button onClick={() => deleteApplication(app.id)} className="w-full text-left px-4 py-2 text-xs hover:bg-red-50 text-red-600">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         )}
       </div>
 
-      {/* Application Detail Modal */}
+      {/* Modal Overlay */}
       {selectedApplication && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
-          <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 rounded-t-2xl">
-              <div className="flex justify-between items-center">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Internship Application Details
-                </h3>
-                <button
-                  onClick={() => setSelectedApplication(null)}
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-all duration-200"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            
-            <div className="p-6 space-y-6">
-              {/* Status Badge */}
-              <div className="flex justify-center">
-                <span className={`px-6 py-2 rounded-full text-sm font-bold border-2 ${getStatusColor(selectedApplication.status || 'pending')}`}>
-                  {(selectedApplication.status || 'pending').toUpperCase()}
-                </span>
-              </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+           <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row animate-scale-in">
+              {/* Sidebar Info (Desktop) / Top Info (Mobile) */}
+              <div className="w-full md:w-1/3 bg-gray-50 border-b md:border-b-0 md:border-r border-gray-100 p-6 flex flex-col">
+                 <div className="mb-6">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-3xl font-bold shadow-lg mb-4">
+                        {selectedApplication.applicantName ? selectedApplication.applicantName.charAt(0).toUpperCase() : 'A'}
+                    </div>
+                    <h2 className="text-xl font-bold text-gray-900 leading-tight">{selectedApplication.applicantName}</h2>
+                    <p className="text-indigo-600 font-medium text-sm mt-1">{selectedApplication.domain}</p>
+                 </div>
 
-              {/* Main Information Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Applicant Information */}
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100">
-                  <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide mb-4 flex items-center">
-                    <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                    Applicant Information
-                  </h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start">
-                      <span className="font-semibold text-gray-600 w-20">Name:</span>
-                      <span className="text-gray-800 font-medium">{selectedApplication.applicantName || 'N/A'}</span>
+                 <div className="space-y-4 flex-1">
+                    <div>
+                        <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Contact</label>
+                        <div className="mt-1 space-y-2">
+                            <a href={`mailto:${selectedApplication.email}`} className="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                <span className="truncate">{selectedApplication.email}</span>
+                            </a>
+                            {selectedApplication.phone && (
+                                <a href={`tel:${selectedApplication.phone}`} className="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                    <span>{selectedApplication.phone}</span>
+                                </a>
+                            )}
+                        </div>
                     </div>
-                    <div className="flex items-start">
-                      <span className="font-semibold text-gray-600 w-20">Email:</span>
-                      <a href={`mailto:${selectedApplication.email}`} className="text-blue-600 hover:text-blue-800 font-medium break-all">
-                        {selectedApplication.email || 'N/A'}
-                      </a>
-                    </div>
-                    {selectedApplication.phone && (
-                      <div className="flex items-start">
-                        <span className="font-semibold text-gray-600 w-20">Phone:</span>
-                        <a href={`tel:${selectedApplication.phone}`} className="text-blue-600 hover:text-blue-800 font-medium">
-                          {selectedApplication.phone}
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                
-                {/* Internship Details */}
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-100">
-                  <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide mb-4 flex items-center">
-                    <svg className="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m8 0H8" />
-                    </svg>
-                    Internship Details
-                  </h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start">
-                      <span className="font-semibold text-gray-600 w-20">Domain:</span>
-                      <span className="text-gray-800 font-medium">{selectedApplication.domain || 'N/A'}</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="font-semibold text-gray-600 w-20">Type:</span>
-                      <span className="text-gray-800 font-medium">
-                        {selectedApplication.applicationType === 'internship' ? 'Internship Application' : selectedApplication.applicationType || 'N/A'}
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="font-semibold text-gray-600 w-20">Applied:</span>
-                      <span className="text-gray-800 font-medium">{formatDate(selectedApplication.submittedAt)}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Duration Section */}
-              {selectedApplication.duration && (
-                <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-100">
-                  <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide mb-3 flex items-center">
-                    <svg className="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Duration
-                  </h4>
-                  <p className="text-gray-800 font-medium text-lg">{selectedApplication.duration}</p>
-                </div>
-              )}
-              
-              {/* Resume Section */}
-              {selectedApplication.resumeFileName && (
-                <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-100">
-                  <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide mb-3 flex items-center">
-                    <svg className="w-5 h-5 mr-2 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Resume
-                  </h4>
-                  <div className="flex items-center justify-between">
-                    <p className="text-gray-800 font-medium">{selectedApplication.resumeFileName}</p>
+                    
                     {selectedApplication.resumeUrl && (
-                      <a 
-                        href={selectedApplication.resumeUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors text-sm font-medium"
-                      >
-                        View Resume
-                      </a>
+                        <div>
+                           <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Attachments</label>
+                           <a 
+                             href={selectedApplication.resumeUrl}
+                             target="_blank"
+                             rel="noopener noreferrer"
+                             className="mt-2 block p-3 bg-white border border-gray-200 rounded-xl hover:border-indigo-300 hover:shadow-md transition-all group"
+                           >
+                              <div className="flex items-center gap-3">
+                                 <div className="bg-red-50 text-red-500 p-2 rounded-lg">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                                 </div>
+                                 <div className="overflow-hidden">
+                                    <p className="text-sm font-semibold text-gray-800 truncate group-hover:text-indigo-600 transition-colors">Resume_File.pdf</p>
+                                    <p className="text-xs text-gray-400">Click to view</p>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
                     )}
-                  </div>
-                </div>
-              )}
+                 </div>
+                 
+                 <div className="text-xs text-gray-400 mt-6 pt-6 border-t border-gray-200">
+                    Applied on {formatDate(selectedApplication.submittedAt)}
+                 </div>
+              </div>
 
-              {/* Additional Information */}
-              {(selectedApplication.coverLetter || selectedApplication.experience || selectedApplication.skills) && (
-                <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-6 rounded-xl border border-gray-200">
-                  <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wide mb-4 flex items-center">
-                    <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Additional Information
-                  </h4>
-                  <div className="space-y-4">
-                    {selectedApplication.coverLetter && (
-                      <div>
-                        <span className="font-semibold text-gray-700 block mb-2">Cover Letter:</span>
-                        <p className="text-gray-600 bg-white p-3 rounded-lg border">{selectedApplication.coverLetter}</p>
-                      </div>
-                    )}
-                    {selectedApplication.experience && (
-                      <div>
-                        <span className="font-semibold text-gray-700 block mb-2">Experience:</span>
-                        <p className="text-gray-600 bg-white p-3 rounded-lg border">{selectedApplication.experience}</p>
-                      </div>
-                    )}
-                    {selectedApplication.skills && (
-                      <div>
-                        <span className="font-semibold text-gray-700 block mb-2">Skills:</span>
-                        <p className="text-gray-600 bg-white p-3 rounded-lg border">{selectedApplication.skills}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
+              {/* Main Content */}
+              <div className="flex-1 bg-white p-6 md:p-8 overflow-y-auto flex flex-col">
+                 <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-lg font-bold text-gray-800">Application Details</h3>
+                    <button onClick={() => setSelectedApplication(null)} className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-500 transition-colors">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                 </div>
 
-              {/* Application Metadata */}
-              <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
-                  <div>
-                    <span className="font-semibold">Application ID:</span> {selectedApplication.id}
-                  </div>
-                  <div>
-                    <span className="font-semibold">Submitted:</span> {formatDate(selectedApplication.submittedAt)} at {selectedApplication.submittedAt ? new Date(selectedApplication.submittedAt).toLocaleTimeString() : 'N/A'}
-                  </div>
-                  {selectedApplication.updatedAt && (
-                    <div className="md:col-span-2">
-                      <span className="font-semibold">Last Updated:</span> {formatDate(selectedApplication.updatedAt)} at {new Date(selectedApplication.updatedAt).toLocaleTimeString()}
+                 <div className="space-y-6 flex-1">
+                    {/* Status Select */}
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-2">Current Status</label>
+                        <select
+                            value={selectedApplication.status || 'pending'}
+                            onChange={(e) => updateApplicationStatus(selectedApplication.id, e.target.value)}
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none bg-gray-50 transition-all font-medium text-gray-700"
+                        >
+                            <option value="pending">Pending</option>
+                            <option value="reviewing">Under Review</option>
+                            <option value="interviewed">Interviewed</option>
+                            <option value="accepted">Accepted</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
                     </div>
-                  )}
-                </div>
+
+                    {selectedApplication.coverLetter ? (
+                        <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-2">Cover Letter</label>
+                            <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 text-gray-600 text-sm leading-relaxed whitespace-pre-wrap">
+                                {selectedApplication.coverLetter}
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="p-8 text-center bg-gray-50 rounded-xl border border-dashed border-gray-200">
+                            <p className="text-gray-400 text-sm italic">No cover letter provided</p>
+                        </div>
+                    )}
+
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+                            <label className="text-xs font-bold text-blue-800 uppercase tracking-wide">Experience</label>
+                            <p className="mt-1 font-semibold text-gray-800">{selectedApplication.experience || 'Not specified'}</p>
+                        </div>
+                        <div className="p-4 bg-purple-50/50 rounded-xl border border-purple-100">
+                            <label className="text-xs font-bold text-purple-800 uppercase tracking-wide">Duration</label>
+                            <p className="mt-1 font-semibold text-gray-800">{selectedApplication.duration || 'Not specified'}</p>
+                        </div>
+                    </div>
+                 </div>
+
+                 <div className="mt-8 pt-6 border-t border-gray-100 flex gap-3 justify-end">
+                    <button 
+                        onClick={() => {
+                            if (window.confirm('Delete this application?')) {
+                                deleteApplication(selectedApplication.id);
+                            }
+                        }}
+                        className="px-5 py-2.5 text-red-600 font-semibold hover:bg-red-50 rounded-xl transition-colors"
+                    >
+                        Delete
+                    </button>
+                    <button 
+                        onClick={() => setSelectedApplication(null)}
+                        className="px-6 py-2.5 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all"
+                    >
+                        Done
+                    </button>
+                 </div>
               </div>
-            </div>
-            
-            {/* Action Buttons */}
-            <div className="sticky bottom-0 bg-white border-t border-gray-200 p-6 rounded-b-2xl">
-              <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-4">
-                  <label className="text-sm font-semibold text-gray-700">Update Status:</label>
-                  <select
-                    value={selectedApplication.status || 'pending'}
-                    onChange={(e) => updateApplicationStatus(selectedApplication.id, e.target.value)}
-                    className={`px-4 py-2 rounded-lg text-sm font-bold border-2 transition-all duration-300 ${getStatusColor(selectedApplication.status || 'pending')}`}
-                  >
-                    <option value="pending">Pending</option>
-                    <option value="reviewing">Reviewing</option>
-                    <option value="interviewed">Interviewed</option>
-                    <option value="accepted">Accepted</option>
-                    <option value="rejected">Rejected</option>
-                  </select>
-                </div>
-                <div className="flex space-x-3">
-                  <button
-                    onClick={() => setSelectedApplication(null)}
-                    className="px-6 py-3 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-200"
-                  >
-                    Close
-                  </button>
-                  <button
-                    onClick={() => {
-                      if (window.confirm('Are you sure you want to delete this application? This action cannot be undone.')) {
-                        deleteApplication(selectedApplication.id);
-                      }
-                    }}
-                    className="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
-                  >
-                    Delete Application
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+           </div>
         </div>
       )}
-      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './components/Login';
 import Home from './components/Home';
 import Services from './components/Services';
-import About from './components/About';
+
 import JobOpenings from './components/JobOpenings';
 import InternshipPrograms from './components/InternshipPrograms';
 import Contact from './components/Contact';
@@ -12,6 +12,8 @@ import Layout from './components/Layout';
 import RoutingTest from './components/RoutingTest';
 import ContactManagement from './components/ContactManagement';
 import FirebaseTest from './components/FirebaseTest';
+import ProjectQuotation from './components/ProjectQuotation';
+import ProjectManagement from './components/ProjectManagement';
 import authService from './authService.js';
 
 function App() {
@@ -98,13 +100,15 @@ function App() {
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" element={<Home />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
+
           <Route path="/job-openings" element={<JobOpenings />} />
           <Route path="/internship-programs" element={<InternshipPrograms />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact-management" element={<ContactManagement />} />
           <Route path="/firebase-test" element={<FirebaseTest />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/project-quotation" element={<ProjectQuotation />} />
+          <Route path="/project-management" element={<ProjectManagement />} />
           <Route path="/routing-test" element={<RoutingTest />} />
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
